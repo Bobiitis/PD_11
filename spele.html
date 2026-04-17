@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="lv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spēle | Rīgas zoodārza ceļvedis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero hero--compact">
+        <nav class="topbar">
+          <a class="brand" href="index.html">
+            <span class="brand__icon">🐾</span>
+            <span>Rīgas zoodārza ceļvedis</span>
+          </a>
+
+          <div class="nav-links">
+            <a href="index.html">Sākums</a>
+            <a href="dzivnieki.html">Dzīvnieki</a>
+            <a class="is-active" href="spele.html">Spēle</a>
+            <a href="kontakti.html">Kontakti</a>
+          </div>
+
+          <div class="topbar__icons">
+            <span>🎮</span>
+            <span>🐾</span>
+            <a id="time"></a>
+          </div>
+        </nav>
+
+        <section class="subhero">
+          <div>
+            <p class="subhero__eyebrow">Pārbaudi zināšanas</p>
+            <h1>Mini spēle par zoodārza dzīvniekiem</h1>
+            <p>Izvēlies pareizo atbildi un trenē savas zināšanas rotaļīgā veidā.</p>
+          </div>
+          <div class="subhero__art">🎮 🦛 🦒</div>
+        </section>
+      </header>
+
+      <main class="single-panel">
+        <section class="panel game-panel game-panel--wide">
+          <div class="panel__label">🎮 Spēle: Izvēlies pareizo!</div>
+          <p class="game-panel__question">
+            Kurš no dotajiem dzīvniekiem ir nilzirgs?
+          </p>
+
+          <div class="quiz-options" id="quiz-options">
+            <button class="quiz-card" data-answer="false" type="button">
+              <span class="quiz-card__emoji">🫎</span>
+              <span>Alnis</span>
+            </button>
+            <button class="quiz-card is-correct" data-answer="true" type="button">
+              <span class="quiz-card__emoji">🦛</span>
+              <span>Nilzirgs</span>
+            </button>
+            <button class="quiz-card" data-answer="false" type="button">
+              <span class="quiz-card__emoji">🦓</span>
+              <span>Zebra</span>
+            </button>
+          </div>
+
+          <div class="quiz-result" id="quiz-result" aria-live="polite">
+            Izvēlies vienu atbildi
+          </div>
+          <div class="quiz-score" id="quiz-score">Pareizi: 0 | Nepareizi: 0</div>
+          <button class="next-question" id="next-question" type="button">
+            Mēģināt vēlreiz
+          </button>
+        </section>
+      </main>
+
+      <footer class="footer-panels footer-panels--single">
+        <section class="footer-panel">
+          <span class="footer-panel__icon">⭐</span>
+          <div>
+            <strong>Uzdevums bērniem</strong>
+            <span>Pēc spēles atrodi šo dzīvnieku arī kartē vai zoodārzā klātienē.</span>
+          </div>
+        </section>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+
