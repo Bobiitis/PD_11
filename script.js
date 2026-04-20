@@ -300,7 +300,7 @@ function refreshTime() {
     return;
   }
 
-  const dateString = new Date().toLocaleString("en-US", { timeZone: "Europe/Riga" });
+  const dateString = new Date().toLocaleString("en-EU", { timeZone: "Europe/Riga" });
   const formattedString = dateString.replace(", ", " - ");
   timeDisplay.innerHTML = formattedString;
 }
