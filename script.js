@@ -1,20 +1,19 @@
-﻿const From = document.getElementById("search-form");
-const Input = document.getElementById("animal-search");
-const Result = document.getElementById("search-result");
-const Options = document.getElementById("quiz-options");
+const searchForm = document.getElementById("search-form");
+const searchInput = document.getElementById("animal-search");
+const quizOptions = document.getElementById("quiz-options");
 const quizResult = document.getElementById("quiz-result");
-const Button = document.getElementById("next-question");
-const Score = document.getElementById("quiz-score");
+const nextQuestionButton = document.getElementById("next-question");
+const quizScore = document.getElementById("quiz-score");
 
-const Emoji = document.getElementById("animal-emoji");
-const Name = document.getElementById("animal-name");
-const Latin = document.getElementById("animal-latin");
-const Location = document.getElementById("animal-location");
-const Food = document.getElementById("animal-food");
-const Lifespan = document.getElementById("animal-lifespan");
-const Size = document.getElementById("animal-size");
-const Description = document.getElementById("animal-description");
-const Route = document.getElementById("animal-route");
+const animalEmoji = document.getElementById("animal-emoji");
+const animalName = document.getElementById("animal-name");
+const animalLatin = document.getElementById("animal-latin");
+const animalLocation = document.getElementById("animal-location");
+const animalFood = document.getElementById("animal-food");
+const animalLifespan = document.getElementById("animal-lifespan");
+const animalSize = document.getElementById("animal-size");
+const animalDescription = document.getElementById("animal-description");
+const animalRoute = document.getElementById("animal-route");
 
 const questions = [
   {
@@ -52,8 +51,10 @@ const animals = {
     food: "Gaļa",
     lifespan: "10-14 gadi",
     size: "Līdz 2,5 m garš",
-    description: "Lauva ir viens no varenākajiem plēsējiem pasaulē, dzīvo baros un tiek dēvēts par dzīvnieku karali.",
-    route: "No ieejas ej taisni, tad pagriezies pa labi pie ēkas. Turpini ceļu vēl 3 minūtes un lauvas aploks būs pa kreisi."
+    description:
+      "Lauva ir viens no varenākajiem plēsējiem pasaulē, dzīvo baros un tiek dēvēts par dzīvnieku karali.",
+    route:
+      "No ieejas ej taisni, tad pagriezies pa labi pie ēkas. Turpini ceļu vēl 3 minūtes un lauvas aploks būs pa kreisi."
   },
   zilonis: {
     name: "Zilonis",
@@ -63,8 +64,10 @@ const animals = {
     food: "Zāle, lapas, augļi",
     lifespan: "60-70 gadi",
     size: "Līdz 4 m augsts",
-    description: "Ziloņi ir gudri un sabiedriski dzīvnieki ar lielisku atmiņu. Tie dzīvo ciešās ģimenes grupās.",
-    route: "No ieejas dodies taisni uz lielo laukumu, tad turies pa kreisi. Ziloņu māja būs pēc dažām minūtēm."
+    description:
+      "Ziloņi ir gudri un sabiedriski dzīvnieki ar lielisku atmiņu. Tie dzīvo ciešās ģimenes grupās.",
+    route:
+      "No ieejas dodies taisni uz lielo laukumu, tad turies pa kreisi. Ziloņu māja būs pēc dažām minūtēm."
   },
   zirafe: {
     name: "Žirafe",
@@ -74,8 +77,10 @@ const animals = {
     food: "Koku lapas un dzinumi",
     lifespan: "20-25 gadi",
     size: "Līdz 5,5 m augsta",
-    description: "Žirafe ir augstākais sauszemes dzīvnieks pasaulē un ar savu garo kaklu viegli sasniedz koku galotnes.",
-    route: "Ej gar centrālo celiņu līdz atklātajiem aplokiem. Žirafes redzēsi labajā pusē."
+    description:
+      "Žirafe ir augstākais sauszemes dzīvnieks pasaulē un ar savu garo kaklu viegli sasniedz koku galotnes.",
+    route:
+      "Ej gar centrālo celiņu līdz atklātajiem aplokiem. Žirafes redzēsi labajā pusē."
   },
   nilzirgs: {
     name: "Nilzirgs",
@@ -85,8 +90,10 @@ const animals = {
     food: "Zāle",
     lifespan: "40-50 gadi",
     size: "Līdz 4,5 m garš",
-    description: "Nilzirgs lielu dienas daļu pavada ūdenī un vakarā dodas baroties. Tas ir ļoti spēcīgs dzīvnieks.",
-    route: "No ieejas ej uz ūdens dzīvnieku zonu. Nilzirga baseins atradīsies pie lielā dīķa."
+    description:
+      "Nilzirgs lielu dienas daļu pavada ūdenī un vakarā dodas baroties. Tas ir ļoti spēcīgs dzīvnieks.",
+    route:
+      "No ieejas ej uz ūdens dzīvnieku zonu. Nilzirga baseins atradīsies pie lielā dīķa."
   },
   zebra: {
     name: "Zebra",
@@ -96,10 +103,10 @@ const animals = {
     food: "Zāle",
     lifespan: "20-25 gadi",
     size: "Līdz 2,4 m gara",
-    description: "Zebras ir sabiedriski dzīvnieki ar raksturīgām melnbaltām svītrām, un katrai zebrai raksts ir atšķirīgs.",
-    route: "Dodoties gar āra aplokiem, turies pa labi. Zebru aploks būs netālu no žirafēm."
-
-    // Ir pievienoti tikai 5 dzīvnieki, kā piemērs kā strādātu
+    description:
+      "Zebras ir sabiedriski dzīvnieki ar raksturīgām melnbaltām svītrām, un katrai zebrai raksts ir atšķirīgs.",
+    route:
+      "Dodoties gar āra aplokiem, turies pa labi. Zebru aploks būs netālu no žirafēm."
   }
 };
 
@@ -118,56 +125,57 @@ function normalizeName(value) {
 
 function renderAnimal(animal) {
   if (
-    !Emoji ||
-    !Name ||
-    !Latin ||
-    !Location ||
-    !Food ||
-    !Lifespan ||
-    !Size ||
-    !Description ||
-    !Route
+    !animalEmoji ||
+    !animalName ||
+    !animalLatin ||
+    !animalLocation ||
+    !animalFood ||
+    !animalLifespan ||
+    !animalSize ||
+    !animalDescription ||
+    !animalRoute
   ) {
     return;
   }
 
-  Emoji.textContent = animal.emoji;
-  Name.textContent = animal.name;
-  Latin.textContent = animal.latin;
-  Location.textContent = animal.location;
-  Food.textContent = animal.food;
-  Lifespan.textContent = animal.lifespan;
-  Size.textContent = animal.size;
-  Description.textContent = animal.description;
-  Route.textContent = animal.route;
+  animalEmoji.textContent = animal.emoji;
+  animalName.textContent = animal.name;
+  animalLatin.textContent = animal.latin;
+  animalLocation.textContent = animal.location;
+  animalFood.textContent = animal.food;
+  animalLifespan.textContent = animal.lifespan;
+  animalSize.textContent = animal.size;
+  animalDescription.textContent = animal.description;
+  animalRoute.textContent = animal.route;
 }
 
-if (From && Input && Result) {
-  From.addEventListener("submit", (event) => {
+if (searchForm && searchInput && quizResult) {
+  searchForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const value = Input.value.trim();
+    const value = searchInput.value.trim();
     if (!value) {
-      Result.textContent = "Ievadi dzīvnieka nosaukumu meklēšanai.";
-      Result.className = "search-result error";
+      quizResult.textContent = "Ievadi dzīvnieka nosaukumu meklēšanai.";
+      quizResult.className = "quiz-result is-error";
       return;
     }
 
     const animal = animals[normalizeName(value)];
 
-    if (animal) {
-      renderAnimal(animal);
-      Result.textContent = `${animal.name} - ${animal.route}`;
-      Result.className = "search-result success";
-    } else {
-      Result.textContent = `${value} - Dzīvnieks netika atrasts.`;
-      Result.className = "search-result error";
+    if (!animal) {
+      quizResult.textContent = "Dzīvnieks netika atrasts.";
+      quizResult.className = "quiz-result is-error";
+      return;
     }
+
+    renderAnimal(animal);
+    quizResult.textContent = `Atrasts: ${animal.name}`;
+    quizResult.className = "quiz-result is-success";
   });
 }
 
 function showQuestion() {
-  if (!Options || !quizResult) {
+  if (!quizOptions || !quizResult) {
     return;
   }
 
@@ -178,11 +186,11 @@ function showQuestion() {
     questionText.textContent = current.question;
   }
 
-  Options.innerHTML = "";
+  quizOptions.innerHTML = "";
 
   for (let i = 0; i < current.answers.length; i++) {
     const answer = current.answers[i];
-    Options.innerHTML += `
+    quizOptions.innerHTML += `
       <button class="quiz-card" data-answer="${answer.correct}" type="button">
         <span class="quiz-card__emoji">${answer.emoji}</span>
         <span>${answer.text}</span>
@@ -194,17 +202,17 @@ function showQuestion() {
   quizResult.className = "quiz-result";
   answered = false;
 
-  if (Button) {
-    Button.textContent = "Tālāk";
-    Button.style.display = "none";
+  if (nextQuestionButton) {
+    nextQuestionButton.textContent = "Tālāk";
+    nextQuestionButton.style.display = "none";
   }
 
   updateScore();
 }
 
 function updateScore() {
-  if (Score) {
-    Score.textContent = `Pareizi: ${correctCount} | Nepareizi: ${wrongCount}`;
+  if (quizScore) {
+    quizScore.textContent = `Pareizi: ${correctCount} | Nepareizi: ${wrongCount}`;
   }
 }
 
@@ -214,58 +222,55 @@ function showFinalResult() {
   }
 
   quizResult.textContent = `Spēle beigusies! Pareizi: ${correctCount}, Nepareizi: ${wrongCount}`;
-  quizResult.className = "quiz-result success";
+  quizResult.className = "quiz-result is-success";
 
-  if (Options) {
-    Options.innerHTML = "";
+  if (quizOptions) {
+    quizOptions.innerHTML = "";
   }
 
-  if (Button) {
-    Button.textContent = "Sākt no jauna";
-    Button.style.display = "block";
+  if (nextQuestionButton) {
+    nextQuestionButton.textContent = "Sākt no jauna";
+    nextQuestionButton.style.display = "block";
   }
 }
 
-if (Options && quizResult) {
+if (quizOptions && quizResult) {
   showQuestion();
 
-  Options.addEventListener("click", (event) => {
+  quizOptions.addEventListener("click", (event) => {
     const button = event.target.closest(".quiz-card");
     if (!button || answered) {
       return;
     }
 
-    const cards = Options.querySelectorAll(".quiz-card");
+    const cards = quizOptions.querySelectorAll(".quiz-card");
     cards.forEach((card) => {
-      card.classList.remove("picked", "right", "wrong");
+      card.classList.remove("is-picked", "is-right", "is-wrong");
     });
 
-    button.classList.add("picked");
+    button.classList.add("is-picked");
 
     if (button.dataset.answer === "true") {
-      button.classList.add("right");
+      button.classList.add("is-right");
       quizResult.textContent = "Atbilde ir pareiza!";
-      quizResult.className = "quiz-result success";
+      quizResult.className = "quiz-result is-success";
       correctCount++;
       answered = true;
 
-      if (Button) {
-        if (currentQuestion === questions.length - 1) {
-          Button.textContent = "Skatīt rezultātu";
-        } else {
-          Button.textContent = "Tālāk";
-        }
-        Button.style.display = "block";
+      if (nextQuestionButton) {
+        nextQuestionButton.textContent =
+          currentQuestion === questions.length - 1 ? "Skatīt rezultātu" : "Tālāk";
+        nextQuestionButton.style.display = "block";
       }
     } else {
-      button.classList.add("wrong");
+      button.classList.add("is-wrong");
       quizResult.textContent = "Nepareizi, mēģini vēlreiz!";
-      quizResult.className = "quiz-result error";
+      quizResult.className = "quiz-result is-error";
       wrongCount++;
       answered = false;
 
-      if (Button) {
-        Button.style.display = "none";
+      if (nextQuestionButton) {
+        nextQuestionButton.style.display = "none";
       }
     }
 
@@ -273,9 +278,9 @@ if (Options && quizResult) {
   });
 }
 
-if (Button && Options && quizResult) {
-  Button.addEventListener("click", () => {
-    if (quizResult.textContent.indexOf("Spēle beigusies!") !== -1) {
+if (nextQuestionButton && quizOptions && quizResult) {
+  nextQuestionButton.addEventListener("click", () => {
+    if (quizResult.textContent.includes("Spēle beigusies!")) {
       currentQuestion = 0;
       correctCount = 0;
       wrongCount = 0;
@@ -302,9 +307,9 @@ function refreshTime() {
     return;
   }
 
-  const dateString = new Date().toLocaleString("en-EU", { timeZone: "Europe/Riga" });
-  const formattedString = dateString.replace(", ", " - ");
-  timeDisplay.innerHTML = formattedString;
+  timeDisplay.textContent = new Date().toLocaleString("lv-LV", {
+    timeZone: "Europe/Riga"
+  });
 }
 
 refreshTime();
