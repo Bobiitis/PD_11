@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rīgas zoodārza ceļvedis</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <nav class="topbar">
+          <a class="brand" href="index.html">
+            <span class="brand__icon">🐾</span>
+            <p>Rīgas zoodārza ceļvedis</p>
+          </a>
+
+          <div class="nav-links">
+            <a class="is-active" href="index.html">Sākums</a>
+            <a href="dzivnieki.html">Dzīvnieki</a>
+            <a href="spele.html">Spēle</a>
+            <a href="kontakti.html">Kontakti</a>
+          </div>
+
+          <div class="topbar__icons">
+            <span>🐾</span>
+            <time id="time"></time>
+          </div>
+        </nav>
+
+        <section class="hero__content">
+          <div class="hero__art hero__art--left">
+            <div class="animal-stack">
+              <span class="animal animal--horse">🐴</span>
+              <span class="animal animal--giraffe">🦒</span>
+              <span class="animal animal--hippo">🦛</span>
+              <span class="animal animal--pig">🐷</span>
+              <span class="animal animal--bear">🐻</span>
+            </div>
+          </div>
+
+          <div class="hero__center">
+            <h1>Atrodi savu mīļāko dzīvnieku!</h1>
+            <p>Meklē dzīvnieku un uzzini, kur tas atrodas zoodārzā</p>
+
+            <form class="searchbar" id="search-form">
+              <span class="searchbar__icon">🔍</span>
+              <input
+                id="animal-search"
+                type="text"
+                placeholder="Ievadi dzīvnieka nosaukumu..."
+                aria-label="Dzīvnieka meklēšana"
+              />
+              <button type="submit" aria-label="Meklēt">Meklēt</button>
+            </form>
+
+
+          </div>
+
+          <div class="hero__art hero__art--right">
+            <span class="hero__big-animal">🐘</span>
+            <div class="paw-trail" aria-hidden="true">
+              <span>🐾</span>
+              <span>🐾</span>
+              <span>🐾</span>
+              <span>🐾</span>
+              <span>🐾</span>
+              <span>🐾</span>
+            </div>
+            <span class="hero__lion">🦁</span>
+          </div>
+        </section>
+      </header>
+
+      <main class="content-grid">
+        <section class="panel animal-panel">
+          <div class="panel__label">🐾 Par dzīvnieku</div>
+
+          <div class="animal-panel__grid">
+            <div class="animal-panel__image">
+              <div class="lion-spotlight" id="animal-emoji">🦁</div>
+            </div>
+
+            <div class="animal-panel__info">
+              <h2 id="animal-name">Lauva</h2>
+              <p class="latin-name" id="animal-latin">(Panthera leo)</p>
+
+              <ul class="facts">
+                <li><strong>📍 Atrašanās vieta:</strong> <span id="animal-location">Āfrika un Indija</span></li>
+                <li><strong>🍽 Ēdiens:</strong> <span id="animal-food">Gaļa</span></li>
+                <li><strong>⏰ Dzīves ilgums:</strong> <span id="animal-lifespan">10-14 gadi</span></li>
+                <li><strong>📏 Izmērs:</strong> <span id="animal-size">Līdz 2,5 m garš</span></li>
+              </ul>
+
+              <p class="description" id="animal-description">
+                Lauva ir viens no varenākajiem plēsējiem pasaulē, dzīvo baros un tiek dēvēts par dzīvnieku karali.
+              </p>
+            </div>
+
+            <div class="animal-panel__route">
+              <h3>Kā nokļūt?</h3>
+              <p id="animal-route">
+                No ieejas ej taisni, tad pagriezies pa labi pie ēkas. Turpini ceļu vēl 3 minūtes un lauvas aploks būs pa kreisi.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel game-panel">
+          <div class="panel__label">🎮 Spēle: Izvēlies pareizo!</div>
+          <p class="game-panel__question">Kurš no dotajiem dzīvniekiem ir nilzirgs?</p>
+
+          <div class="quiz-options" id="quiz-options"></div>
+
+          <div class="quiz-result" id="quiz-result" aria-live="polite">
+            Izvēlies vienu atbildi
+          </div>
+          <div class="quiz-score" id="quiz-score">Pareizi: 0 | Nepareizi: 0</div>
+          <button class="next-question" id="next-question" type="button">
+            Nākamais jautājums
+          </button>
+        </section>
+      </main>
+
+      <footer class="footer-panels">
+        <section class="footer-panel">
+          <span class="footer-panel__icon">🕘</span>
+          <div>
+            <strong>Darba laiks:</strong>
+            <span>P. - Sv.: 9:00 - 20:00</span>
+          </div>
+        </section>
+
+        <section class="footer-panel">
+          <span class="footer-panel__icon">♡</span>
+          <div>
+            <strong>Rūpēsimies par dzīvniekiem kopā!</strong>
+            <span>Lai zoodārzs būtu tīrs un patīkams mums visiem</span>
+          </div>
+        </section>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
